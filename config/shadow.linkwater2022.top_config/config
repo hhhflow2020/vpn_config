@@ -1,0 +1,29 @@
+
+
+导入ca证书才能用
+
+vpn类型: ikev2
+服务器地址: shadow.linkwater2022.top
+远程id: shadow.linkwater2022.top
+登录用户名: wgy
+登录密码: wgy12345
+
+windows导入过程: https://www.jianshu.com/p/ee90be73173e
+
+
+hkshadow.linkwater2022.top
+
+yum install firewalld -y
+
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+
+systemctl start firewalld
+firewall-cmd --state
+firewall-cmd --permanent --add-service="ipsec"
+firewall-cmd --permanent --add-port=500/udp
+firewall-cmd --permanent --add-port=4500/udp
+firewall-cmd --permanent --add-port=22/udp
+firewall-cmd --permanent --add-port=22/tcp
+firewall-cmd --permanent --add-masquerade
+firewall-cmd --reload

@@ -1,0 +1,21 @@
+yum install firewalld -y
+
+systemctl stop iptables
+systemctl stop iptable
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+firewall-cmd --state
+firewall-cmd --permanent --add-service="ipsec"
+firewall-cmd --permanent --add-port=500/udp
+firewall-cmd --permanent --add-port=4500/udp
+firewall-cmd --permanent --add-port=22/udp
+firewall-cmd --permanent --add-masquerade
+systemctl start firewalld
+firewall-cmd --state
+firewall-cmd --permanent --add-service="ipsec"
+firewall-cmd --permanent --add-port=500/udp
+firewall-cmd --permanent --add-port=4500/udp
+firewall-cmd --permanent --add-port=22/udp
+firewall-cmd --permanent --add-masquerade
+firewall-cmd --reload
+firewall-cmd --permanent --add-port=22/tcp
